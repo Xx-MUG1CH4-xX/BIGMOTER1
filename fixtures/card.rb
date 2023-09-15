@@ -1,4 +1,4 @@
-class card
+class Card
     def initialize
         @mycards=[]
         @mycards=[0,0,0,0,0]

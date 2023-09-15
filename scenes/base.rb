@@ -1,8 +1,8 @@
 class Base
+  attr_accessor :finish
   def initialize
-    @mouse = mouse.new
-    @finish = true
-    @next_scene = nil
+    @mouse = Mouse.new
+    @finish = false
   end
 
   def update
@@ -10,6 +10,10 @@ class Base
   end
 
   def finish?
-    return @finish
+    return  @finish
+  end
+
+  def reset
+    @finish = false
   end
 end

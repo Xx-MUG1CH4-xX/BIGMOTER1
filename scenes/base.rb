@@ -1,5 +1,4 @@
 class Base
-  attr_accessor :finish
   def initialize
     @mouse = Mouse.new
     @finish = false
@@ -7,6 +6,7 @@ class Base
 
   def update
     @mouse.update
+    Window.close if Input.key_push?(K_ESCAPE)
   end
 
   def finish?

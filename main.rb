@@ -1,6 +1,7 @@
 require 'dxruby'
 
-Dir['fixtures/*.rb',
+Dir['fixtures/dealer.rb',
+    'fixtures/*.rb',
     'scenes/base.rb',
     'scenes/*.rb',
    ].each do |file|

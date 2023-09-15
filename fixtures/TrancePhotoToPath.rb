@@ -32,5 +32,4 @@ class TrancePhotoToPath
 
         return(trp_path)
     end
-    
 end

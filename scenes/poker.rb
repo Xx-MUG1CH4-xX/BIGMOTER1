@@ -3,7 +3,7 @@ class Poker < Base
     super
     @player = Player.new
     @card = Card.new
-    @image = Image.load("images/stage_back.png")
+    @image = Image.load("image/stage_back.png")
   end
 
   def update

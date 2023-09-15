@@ -1,4 +1,4 @@
-class Dealer < Sprite
+class Dealer
     def initialize
         @my_cards=[0,0,0,0,0]
         @change = [0,0,0,0,0]

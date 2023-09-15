@@ -1,4 +1,4 @@
-class Player
+class Player < Dealer
   def initialize
     @point = 0
   end

@@ -3,6 +3,7 @@ class Player
     @point = 0
   end
 
-  def update
+  def score
+    return @point
   end
 end

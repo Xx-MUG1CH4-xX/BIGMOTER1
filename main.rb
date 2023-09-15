@@ -13,8 +13,8 @@ highlow = Highlow.new
 scene = [title, poker,highlow]
 i = 0
 
-Window.width = 700
-Window.height = 500
+Window.width = 1000
+Window.height = 750
 
 Window.loop do
   i = 1 if i > 2

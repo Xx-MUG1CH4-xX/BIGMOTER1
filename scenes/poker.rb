@@ -1,13 +1,14 @@
 class Poker < Base
   def initialize
     super
+    @player = Player.new
+    @image = Image.load("images/stage_back.png")
   end
 
   def update
     super
-    Window.draw_font(100, 100, "poker", Font.new(32) )
-    if Input.mouse_push?(M_LBUTTON)
-      @finish = true
-    end
+    Window.draw(0,0,@image)
+    Window.draw_font(0,0,"score:#{@player.score}",Font.new(24))
+
   end
 end

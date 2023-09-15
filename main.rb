@@ -16,7 +16,6 @@ i = 0
 Window.width = 700
 Window.height = 500
 
-
 Window.loop do
   i = 1 if i > 2
   scene[i].update

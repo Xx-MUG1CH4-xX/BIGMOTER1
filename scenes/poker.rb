@@ -12,9 +12,9 @@ class Poker < Base
     @player.set_card
 
 
+
     @player.my_cards.each do |num|
       @cards << Card.new(x,y,num)
     end
-
   end
 end

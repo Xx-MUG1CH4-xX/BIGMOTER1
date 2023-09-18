@@ -60,15 +60,15 @@ class Dealer
         end
 
         if count_box.sort.reverse == [4,1]
-            return "４カード"
+            return "4カード"
         elsif  count_box.sort.reverse == [3,2]
             return "フルハウス"
         elsif  count_box.sort.reverse == [3,1,1]
-            return "３カード"
+            return "3カード"
         elsif  count_box.sort.reverse == [2,2,1]
-            return "２ペア"
+            return "2ペア"
         elsif  count_box.sort.reverse == [2,1,1,1]
-            return "１ペア"
+            return "1ペア"
         elsif count_box.sort.reverse == [1,1,1,1,1]
             if num.sort == [1,10,11,12,13] && flush == 1
                 return "ロイヤルストレートフラッシュ"

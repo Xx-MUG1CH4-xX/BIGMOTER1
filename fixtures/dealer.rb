@@ -41,7 +41,7 @@ class Dealer
     def check_card
         suit = []
         num = []
-        @my_cards.each_with_index do |card,i|
+        @my_cards.sort.each_with_index do |card,i|
             tmp_suit = (card - 1) / 13
             suit << "S" if tmp_suit == 0
             suit << "H" if tmp_suit == 1

@@ -6,13 +6,14 @@ class Poker < Base
     @cards = []
     @change_button = []
 
-    @set_button = Sprite.new(450,600,Image.load("image/botann.png"))
+    @check = false
+
+    @set_button = Sprite.new(350,550,Image.load("image/botann.png"))
 
     @change = Image.load("image/change_button.png")
     @no_change = Image.load("image/no_change_button.png")
 
-    @player.set_card
-    set_card
+    reset_card
   end
 
   def update
@@ -39,6 +40,8 @@ class Poker < Base
       if @mouse === @set_button
         @player.change_card
         set_card
+        setname = @player.check_card
+        @check = true
       end
       #かえるボタン
       @change_button.each_with_index do |button,i|
@@ -46,6 +49,14 @@ class Poker < Base
           @player.change_cards[i] = !@player.change_cards[i]
           button.image = set_image(@player.change_cards[i])
         end
+      end
+    end
+
+    if @check
+      draw_set(setname)
+      if Input.key_push?(K_SPACE)
+        reset_card
+        @check = false
       end
     end
   end
@@ -59,12 +70,33 @@ class Poker < Base
     end
   end
 
+  def reset_card
+    @player.reset_change
+    @player.set_card
+    set_card
+  end
+
   def set_image(bool)
     if !bool
       Image.load("image/change_button.png")
     else
       Image.load("image/no_change_button.png")
     end
+  end
+
+  def draw_set(name)
+    image = Image.load("image/no.png")
+    image = Image.load("image/no.png") if name == "ノーペア"
+    image = Image.load("image/one.PNG") if name == "1ペア"
+    image = Image.load("image/two.PNG") if name == "2ペア"
+    image = Image.load("image/three.PNG") if name == "3カード"
+    image = Image.load("image/four.PNG") if name == "4カード"
+    image = Image.load("image/FULLHOUSE.PNG") if name == "フルハウス"
+    image = Image.load("image/FLUSH.PNG") if name == "フラッシュ"
+    image = Image.load("image/straight.PNG") if name == "ストレート"
+    image = Image.load("image/straightflush.PNG") if name == "ロイヤルストレートフラッシュ"
+
+    Window.draw(450,350,image)
   end
 
   def next_scene

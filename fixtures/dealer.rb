@@ -1,7 +1,8 @@
 class Dealer
+  attr_accessor :change_cards
     def initialize
         @my_cards = [0,0,0,0,0]
-        @change_cards = [1,1,1,1,1]
+        @change_cards = [false,false,false,false,false]
     end
 
     def set_card
@@ -10,16 +11,13 @@ class Dealer
             shuffle_card(i)
         end
         @my_cards.sort!
-        p @my_cards
     end
 
     def change_card
         #変更があった場所を再度抽選
-        @change_cards.each_with_index do |num,i|
-            shuffle_card(i) if num == 1
+        @change_cards.each_with_index do |bool,i|
+            shuffle_card(i) if !bool
         end
-        @my_cards.sort!
-        p @my_cards
     end
 
     def shuffle_card(i)
@@ -35,6 +33,7 @@ class Dealer
         @my_cards[i] = @rand_num
     end
 
+  　#役判定
     def check_card
         suit = []
         num = []

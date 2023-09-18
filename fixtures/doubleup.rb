@@ -8,7 +8,7 @@ Window.height = 750
 # 初期の賭け金とベット額
 money = 100
 bet_amount = money
-
+dou
 # フォントの設定
 font = Font.new(48)
 

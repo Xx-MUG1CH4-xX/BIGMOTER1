@@ -52,7 +52,7 @@ class Dealer
         end
 
         flush = 1 if suit.count(suit[0]) == suit.length
-        straight = 1 if num.sort[1] == num.sort[0] +1 && num.sort[2] == num.sort[0] + 2 && num.sort[3] == num.sort[0] +3 && num.sort[4] == num.sort[0] + 4 || num.sort == [1,10,11,12,13]
+        straight = 1 if num.sort[1] == num.sort[0] +1 && num.sort[2] == num.sort[0] + 2 && num.sort[3] == num.sort[0] +3 && num.sort[4] == num.sort[0] + 4 || num.sort == [0,1,10,11,12]
         #カードの数を数えてから役を判定
         count_box = []
         for i in 0..num.uniq.length-1
@@ -70,9 +70,9 @@ class Dealer
         elsif  count_box.sort.reverse == [2,1,1,1]
             return "1ペア"
         elsif count_box.sort.reverse == [1,1,1,1,1]
-            if num.sort == [1,10,11,12,13] && flush == 1
+            if num.sort == [0,1,10,11,12] && flush == 1
                 return "ロイヤルストレートフラッシュ"
-            elsif straight == 1 && flush == 1 &&  num.sort != [1,10,11,12,13]
+            elsif straight == 1 && flush == 1 &&  num.sort != [0,1,10,11,12]
                 return "ストレートフラッシュ"
             elsif flush == 1
                 return "フラッシュ"

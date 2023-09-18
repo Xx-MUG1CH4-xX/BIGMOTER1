@@ -34,30 +34,30 @@ class Poker < Base
       button.draw
     end
 
-    #マウスクリック確認
-    if Input.mouse_push?(M_LBUTTON)
-      #配るボタン
-      if @mouse === @set_button
-        @player.change_card
-        set_card
-        @setname = @player.check_card
-        @check = true
-      end
-      #かえるボタン
-      @change_button.each_with_index do |button,i|
-        if @mouse === button
-          @player.change_cards[i] = !@player.change_cards[i]
-          button.image = set_image(@player.change_cards[i])
-        end
-      end
-    end
-
     if @check
       image = draw_set(@setname)
       Window.draw(450,350,image)
       if Input.key_push?(K_SPACE)
         reset_card
         @check = false
+      end
+    else
+      #マウスクリック確認
+      if Input.mouse_push?(M_LBUTTON)
+        #配るボタン
+        if @mouse === @set_button
+          @player.change_card
+          set_card
+          @setname = @player.check_card
+          @check = true
+        end
+        #かえるボタン
+        @change_button.each_with_index do |button,i|
+          if @mouse === button
+            @player.change_cards[i] = !@player.change_cards[i]
+            button.image = set_image(@player.change_cards[i])
+          end
+        end
       end
     end
   end

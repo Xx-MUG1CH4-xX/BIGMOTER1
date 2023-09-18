@@ -6,7 +6,10 @@ class Poker < Base
     @cards = []
     @change_button = []
 
+    @flag = true
     @check = false
+
+    @use_point = 100
 
     @set_button = Sprite.new(350,550,Image.load("image/botann.png"))
 
@@ -21,6 +24,9 @@ class Poker < Base
     #背景表示
     Window.draw(0,0,@image)
 
+    #point表示
+    @player.update
+
     #くばるボタン表示
     @set_button.draw
 
@@ -34,12 +40,19 @@ class Poker < Base
       button.draw
     end
 
+    check_point
+
     if @check
       image = draw_set(@setname)
       Window.draw(450,350,image)
+      if @flag == true
+        @player.point += @power * @use_point - @use_point
+        @flag = false
+      end
       if Input.key_push?(K_SPACE)
         reset_card
         @check = false
+        @flag = true
       end
     else
       #マウスクリック確認
@@ -77,6 +90,13 @@ class Poker < Base
     set_card
   end
 
+  def check_point
+    if @player.point <= 0
+      @finish = true
+      @next_scene = Ending.new
+    end
+  end
+
   def set_image(bool)
     if !bool
       Image.load("image/change_button.png")
@@ -86,21 +106,42 @@ class Poker < Base
   end
 
   def draw_set(name)
-    image = Image.load("image/no.png") if name == "ノーペア"
-    image = Image.load("image/one.PNG") if name == "1ペア"
-    image = Image.load("image/two.PNG") if name == "2ペア"
-    image = Image.load("image/three.PNG") if name == "3カード"
-    image = Image.load("image/four.PNG") if name == "4カード"
-    image = Image.load("image/FULLHOUSE.PNG") if name == "フルハウス"
-    image = Image.load("image/FLUSH.PNG") if name == "フラッシュ"
-    image = Image.load("image/straight.PNG") if name == "ストレート"
-    image = Image.load("image/straighflash.PNG") if name == "ストレートフラッシュ"
-    image = Image.load("image/ROYAL.PNG") if name == "ロイヤルストレートフラッシュ"
+    if name == "ノーペア"
+      image = Image.load("image/no.png")
+      @power = 0
+    elsif name == "1ペア"
+      image = Image.load("image/one.PNG")
+      @power = 1
+    elsif name == "2ペア"
+      image = Image.load("image/two.PNG")
+      @power = 2
+    elsif name == "3カード"
+      image = Image.load("image/three.PNG")
+      @power = 3
+    elsif name == "4カード"
+      image = Image.load("image/four.PNG")
+      @power = 4
+    elsif name == "フルハウス"
+      image = Image.load("image/FULLHOUSE.PNG")
+      @power = 7
+    elsif name == "フラッシュ"
+      image = Image.load("image/FLUSH.PNG")
+      @power = 5
+    elsif name == "ストレート"
+      image = Image.load("image/straight.PNG")
+      @power = 10
+    elsif name == "ストレートフラッシュ"
+      image = Image.load("image/straighflash.PNG")
+      @power = 50
+    elsif name == "ロイヤルストレートフラッシュ"
+      image = Image.load("image/ROYAL.PNG")
+      @power = 500
+    end
 
     return image
   end
 
   def next_scene
-    Highlow.new
+    @next_scene
   end
 end

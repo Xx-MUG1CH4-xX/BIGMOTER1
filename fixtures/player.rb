@@ -1,8 +1,13 @@
 class Player < Dealer
-  attr_accessor :my_cards
+  attr_accessor :my_cards,:point
   def initialize
     super
-    @point = 1000
+    @point = 100
+    @font = Font.new(32)
+  end
+
+  def update
+    Window.draw_font(0,0,"POINT:#{@point}",Font.new(32))
   end
 
   def score

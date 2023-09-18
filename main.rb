@@ -8,7 +8,7 @@ Dir['fixtures/dealer.rb',
   require_relative file
 end
 
-scene = Ending.new
+scene = Title.new
 
 Window.width = 1000
 Window.height = 750

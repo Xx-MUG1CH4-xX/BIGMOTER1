@@ -2,7 +2,7 @@ class Player < Dealer
   attr_accessor :my_cards,:point
   def initialize
     super
-    @point = 1000
+    @point = 100
     @font = Font.new(32)
   end
 

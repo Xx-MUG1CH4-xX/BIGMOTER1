@@ -9,7 +9,7 @@ class Poker < Base
     @flag = true
     @check = false
 
-    @use_point = 10
+    @use_point = 100
 
     @set_button = Sprite.new(350,550,Image.load("image/botann.png"))
 
@@ -39,6 +39,8 @@ class Poker < Base
     @change_button.each do |button|
       button.draw
     end
+
+    check_point
 
     if @check
       image = draw_set(@setname)
@@ -90,9 +92,8 @@ class Poker < Base
 
   def check_point
     if @player.point <= 0
+      @finish = true
       @next_scene = Ending.new
-    else
-      @next_scene = Highlow.new
     end
   end
 

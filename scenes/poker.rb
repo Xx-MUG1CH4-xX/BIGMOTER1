@@ -21,6 +21,8 @@ class Poker < Base
       card.update
     end
 
+    @player.check_card
+
     if Input.mouse_push?(M_LBUTTON)
       if @mouse === @change_button
         @player.change_card

@@ -10,7 +10,6 @@ end
 
 scene = Title.new
 
-p 1
 Window.width = 1000
 Window.height = 750
 

@@ -8,7 +8,7 @@ Dir['fixtures/dealer.rb',
   require_relative file
 end
 
-scene = Title.new
+scene = DoubleUp.new
 
 Window.width = 1000
 Window.height = 750

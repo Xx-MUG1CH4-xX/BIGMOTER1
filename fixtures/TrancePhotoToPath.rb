@@ -28,7 +28,7 @@ class TrancePhotoToPath
             trp_path="clover_"+trp_path
         end
 
-        trp_path="image/"+trp_path       #出力成形
+        trp_path="./image/"+trp_path       #出力成形
 
         return(trp_path)
     end

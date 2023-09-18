@@ -1,11 +1,10 @@
 class Card < Sprite
   def initialize(x,y,num)
-    super
-    @route = TrancePhotoToPath.new
-
+    route = TrancePhotoToPath.new
+    @path = route.Trance(num)
     self.x = x
     self.y = y
-    self.image = Image.load(@route.Trance(num))
+    self.image = Image.load(@path)
   end
 
   def update

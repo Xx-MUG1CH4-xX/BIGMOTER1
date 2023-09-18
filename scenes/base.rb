@@ -2,6 +2,7 @@ class Base
   def initialize
     @mouse = Mouse.new
     @finish = false
+    @next_scene = nil
   end
 
   def update

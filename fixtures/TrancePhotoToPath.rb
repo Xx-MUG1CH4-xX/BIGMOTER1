@@ -12,23 +12,23 @@ class TrancePhotoToPath
             trp_path="J"+trp_path
         elsif trp_num==12 then
             trp_path="Q"+trp_path
-        elsif trp_num==13 then
+        elsif trp_num==0 then
             trp_path="K"+trp_path
         else
             trp_path=(trp_num).to_s+trp_path
         end
 
         if trp_category==0 then
-            trp_path="♠"+trp_path
+            trp_path="spade_"+trp_path
         elsif trp_category==1 then
-            trp_path="♥"+trp_path
+            trp_path="heart_"+trp_path
         elsif trp_category==2 then
-            trp_path="♦"+trp_path
+            trp_path="diamond_"+trp_path
         elsif trp_category==3 then
-            trp_path="☘"+trp_path
+            trp_path="clover_"+trp_path
         end
 
-        trp_path="../image/"+trp_path       #出力成形
+        trp_path="image/"+trp_path       #出力成形
 
         return(trp_path)
     end

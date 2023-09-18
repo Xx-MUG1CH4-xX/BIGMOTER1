@@ -13,4 +13,8 @@ class Title < Base
       @finish = true
     end
   end
+
+  def next_scene
+    Poker.new
+  end
 end

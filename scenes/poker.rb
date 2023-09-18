@@ -40,7 +40,7 @@ class Poker < Base
       if @mouse === @set_button
         @player.change_card
         set_card
-        setname = @player.check_card
+        @setname = @player.check_card
         @check = true
       end
       #かえるボタン
@@ -53,7 +53,8 @@ class Poker < Base
     end
 
     if @check
-      draw_set(setname)
+      image = draw_set(@setname)
+      Window.draw(450,350,image)
       if Input.key_push?(K_SPACE)
         reset_card
         @check = false
@@ -85,7 +86,6 @@ class Poker < Base
   end
 
   def draw_set(name)
-    image = Image.load("image/no.png")
     image = Image.load("image/no.png") if name == "ノーペア"
     image = Image.load("image/one.PNG") if name == "1ペア"
     image = Image.load("image/two.PNG") if name == "2ペア"
@@ -94,9 +94,10 @@ class Poker < Base
     image = Image.load("image/FULLHOUSE.PNG") if name == "フルハウス"
     image = Image.load("image/FLUSH.PNG") if name == "フラッシュ"
     image = Image.load("image/straight.PNG") if name == "ストレート"
-    image = Image.load("image/straightflush.PNG") if name == "ロイヤルストレートフラッシュ"
+    image = Image.load("image/straighflash.PNG") if name == "ストレートフラッシュ"
+    image = Image.load("image/ROYAL.PNG") if name == "ロイヤルストレートフラッシュ"
 
-    Window.draw(450,350,image)
+    return image
   end
 
   def next_scene

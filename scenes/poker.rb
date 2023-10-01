@@ -49,7 +49,7 @@ class Poker < Base
         @player.point += @power * @use_point - @use_point
         @flag = false
       end
-      if Input.key_push?(K_SPACE)
+      if Input.mouse_push?(M_LBUTTON)
         reset_card
         @check = false
         @flag = true
